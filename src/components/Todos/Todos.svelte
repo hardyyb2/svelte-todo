@@ -7,6 +7,6 @@
 
 <main>
   {#each todos as todo (todo.name)}
-    <Todo name={todo.name} />
+    <Todo name={todo.name} on:deleteTodo />
   {/each}
 </main>

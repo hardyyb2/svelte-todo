@@ -1,4 +1,4 @@
-<script lang="typescript">
+<script lang="ts">
   import SearchBar from "./components/SearchBar.svelte";
   import Todos from "./components/Todos/Todos.svelte";
 
@@ -13,11 +13,17 @@
     todos = [...todos, { name: val }];
     e.target.reset();
   }
+
+  function handleDeleteTodo(e: CustomEvent<{ name: string }>) {
+    const todoName = e.detail?.name;
+    let newTodos = todos.filter((todo) => todo.name !== todoName);
+    todos = newTodos;
+  }
 </script>
 
 <main>
   <SearchBar on:submit={handleSubmit} />
-  <Todos {todos} />
+  <Todos {todos} on:deleteTodo={handleDeleteTodo} />
 </main>
 
 <style>

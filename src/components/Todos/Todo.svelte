@@ -1,12 +1,13 @@
-<script lang="typescript">
+<script lang="ts">
   import { createEventDispatcher } from "svelte";
+  const dispatch = createEventDispatcher();
 
   export let name: string;
 </script>
 
 <div class="todo">
   <span>{name}</span>
-  <span on:click={() => dispa}>&Cross;</span>
+  <span on:click={() => dispatch("deleteTodo", { name })}>&Cross;</span>
 </div>
 
 <style>
