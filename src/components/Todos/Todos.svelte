@@ -1,12 +1,11 @@
 <script lang="typescript">
   import Todo from "./Todo.svelte";
 
-  type TodoItem = { name: string };
-  export let todos: TodoItem[] = [];
+  export let todos = [];
 </script>
 
 <main>
   {#each todos as todo (todo.name)}
-    <Todo name={todo.name} on:deleteTodo />
+    <Todo name={todo.name} done={todo.done} on:deleteTodo on:doneTodo />
   {/each}
 </main>
